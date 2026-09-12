@@ -1,0 +1,28 @@
+<h1 class="display-5 fw-bold mb-2">Контакты</h1>
+<p class="text-muted mb-4 fs-5">Вы можете связаться с нами через форму обратной связи.</p>
+
+<div class="row g-5">
+    <!-- Колонка с формой -->
+    <div class="col-md-6">
+        <form class="p-4 bg-light border rounded shadow-sm" action="/feedback" method="POST">
+            <div class="mb-3">
+                <label class="form-label fw-medium">Имя</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-medium">Почта</label>
+                <input type="email" name="email" class="form-control" placeholder="@" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-medium">Сообщение</label>
+                <textarea name="message" class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Отправить</button>
+        </form>
+    </div>
+    <!-- Колонка с текстом -->
+    <div class="col-md-6">
+        <h3 class="h4 mb-3 fw-semibold">Наши контакты</h3>
+        <p class="text-secondary">Здесь должны быть наши контакты</p>
+    </div>
+</div>

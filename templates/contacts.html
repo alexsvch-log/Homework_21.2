@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проект на Bootstrap</title>
+    <!-- Подключаем Bootstrap-стили (локальный файл) -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Твои кастомные стили (для цвета меню и скрытия блоков) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Используем флекс-сетку Bootstrap на всю высоту экрана -->
+    <div class="container-fluid p-0 d-flex min-vh-100">
+        
+        <!-- ЛЕВАЯ ЧАСТЬ: Меню (Sidebar) -->
+        <aside class="bg-dark text-white p-4 d-flex flex-column" style="width: 250px; flex-shrink: 0;">
+            <div class="logo h3 mb-4 fw-bold">В Меню</div>
+            <nav class="nav flex-column gap-2 flex-grow-1">
+                <button class="nav-link btn btn-dark text-start text-secondary" data-page="home">Главная</button>
+                <button class="nav-link btn btn-dark text-start text-secondary" data-page="catalog">Категории</button>
+                <button class="nav-link btn btn-dark text-start text-secondary" data-page="category_1">Заказы</button>
+                <button class="nav-link btn btn-primary text-start text-white active" data-page="contacts_content">Контакты</button>
+            </nav>
+            <div class="profile border-top border-secondary pt-3 mt-auto">
+                <p class="text-secondary small mb-1">Профиль</p>
+                <p class="text-secondary small mb-2">Выход</p>
+                <div class="user fw-bold">Пользователь</div>
+            </div>
+        </aside>
+
+        <!-- ПРАВАЯ ЧАСТЬ: Сюда динамически подгружаются остальные файлы -->
+        <main class="flex-grow-1 p-5 bg-white" id="content-area">
+            <h1 class="display-5 fw-bold mb-2">Контакты</h1>
+            <p class="text-muted mb-4 fs-5">Вы можете связаться с нами через форму обратной связи.</p>
+            
+            <div class="row g-5">
+                <!-- Колонка с формой -->
+                <div class="col-md-6">
+                    <form class="p-4 bg-light border rounded shadow-sm" action="/feedback" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label fw-medium">Имя</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-medium">Почта</label>
+                            <input type="email" name="email" class="form-control" placeholder="@" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-medium">Сообщение</label>
+                            <textarea name="message" class="form-control" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2">Отправить</button>
+                    </form>
+                </div>
+                <!-- Колонка с текстом -->
+                <div class="col-md-6">
+                    <h3 class="h4 mb-3 fw-semibold">Наши контакты</h3>
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Использован Bootstrap для верстки полей и сеток.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
