@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Проект на Bootstrap</title>
-    <!-- Подключаем Bootstrap-стили (локальный файл) -->
+    <!-- Локальное подключение Bootstrap -->
     <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Твои кастомные стили (для цвета меню и скрытия блоков) -->
+    <!-- Кастомные стили -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <!-- Используем флекс-сетку Bootstrap на всю высоту экрана -->
     <div class="container-fluid p-0 d-flex min-vh-100">
-        
-        <!-- ЛЕВАЯ ЧАСТЬ: Меню (Sidebar) -->
+
+        <!-- ЛЕВАЯ ЧАСТЬ: Меню (Sidebar) — отражается на всех страницах. обходит запрет server на переключеие страниц-->
         <aside class="bg-dark text-white p-4 d-flex flex-column" style="width: 250px; flex-shrink: 0;">
             <div class="logo h3 mb-4 fw-bold">В Меню</div>
             <nav class="nav flex-column gap-2 flex-grow-1">
@@ -29,36 +28,10 @@
             </div>
         </aside>
 
-        <!-- ПРАВАЯ ЧАСТЬ: Сюда динамически подгружаются остальные файлы -->
+        <!-- ПРАВАЯ ЧАСТЬ: Контейнер для динамического контента -->
         <main class="flex-grow-1 p-5 bg-white" id="content-area">
-            <h1 class="display-5 fw-bold mb-2">Контакты</h1>
-            <p class="text-muted mb-4 fs-5">Вы можете связаться с нами через форму обратной связи.</p>
-            
-            <div class="row g-5">
-                <!-- Колонка с формой -->
-                <div class="col-md-6">
-                    <form class="p-4 bg-light border rounded shadow-sm" action="/feedback" method="POST">
-                        <div class="mb-3">
-                            <label class="form-label fw-medium">Имя</label>
-                            <input type="text" name="name" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-medium">Почта</label>
-                            <input type="email" name="email" class="form-control" placeholder="@" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-medium">Сообщение</label>
-                            <textarea name="message" class="form-control" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100 py-2">Отправить</button>
-                    </form>
-                </div>
-                <!-- Колонка с текстом -->
-                <div class="col-md-6">
-                    <h3 class="h4 mb-3 fw-semibold">Наши контакты</h3>
-                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Использован Bootstrap для верстки полей и сеток.</p>
-                </div>
-            </div>
+            <!-- Магия Flask: при первом заходе сервер сам вставит сюда форму контактов из contacts_content.html -->
+            {% include 'contacts_content.html' %}
         </main>
     </div>
 

@@ -1,6 +1,6 @@
-# Импортируем наше готовое Flask-приложение из папки src
+# Импортируем готовое Flask-приложение из папки src
 from src.server import app
 
 if __name__ == "__main__":
-    # Запускаем сервер отсюда
+    # Запускаем модуль server.py отсюда
     app.run(debug=True)
