@@ -1,3 +1,6 @@
+// Введен для управления переключения страницами в обход запрета ТЗ, а также что бы не перерисовывать страницу
+//каждый раз при обращении к ней. Скрипт находит все кнопки в левом меню и автоматически подгружает нужную
+// страницу.
 document.addEventListener('DOMContentLoaded', () => {
     const menuItems = document.querySelectorAll('.nav-link');
     const contentArea = document.getElementById('content-area');
